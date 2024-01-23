@@ -1,14 +1,16 @@
 import NaoEncontrado from "../erros/NaoEncontrado.js";
-import {autores} from "../models/index.js";
+import { autores } from "../models/index.js";
 
 // NEXTE ESTA DEFINIDO EM manipuladorDeErros.js
 
 class AutorController {
   static listarAutores = async (req, res, next) => {
     try {
-      const autoresResultado = await autores.find();
+      const autoresResultado = autores.find();
 
-      res.status(200).json(autoresResultado);
+      req.resultado = autoresResultado;
+
+      next();
     } catch (erro) {
       next(erro);
     }
