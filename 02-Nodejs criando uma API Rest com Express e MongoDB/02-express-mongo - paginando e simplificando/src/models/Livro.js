@@ -15,7 +15,7 @@ const livroSchema = new mongoose.Schema({
     type: String,
     required: [true, "A editora é obrigatorio."],
     enum: {
-      values: ["Casa do código", "Alura"],
+      values: ["Casa do código", "Alura", "Inundo"],
       message: "A editora {VALUE} está fora dos parametros definidos.",
     }, //torno obrigatorio ter casa do codigo ou alura no campo editora que será enviado
   },
