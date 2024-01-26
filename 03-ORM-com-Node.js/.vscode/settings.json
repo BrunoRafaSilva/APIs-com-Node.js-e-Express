@@ -1,0 +1,11 @@
+{
+  "sqltools.useNodeRuntime": true,
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "api alura",
+      "database": "${workspaceFolder:03-ORM-com-Node.js}/database.sqlite"
+    }
+  ]
+}
