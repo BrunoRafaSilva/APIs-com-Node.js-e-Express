@@ -2,13 +2,11 @@
 
 const fs = require("fs");
 const path = require("path");
-const __dirname = path.resolve();
-const __filename = path.resolve();
 const Sequelize = require("sequelize");
 const process = require("process");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "../config/config.json")[env];
+const config = require(__dirname + "/../config/config.json")[env];
 const db = {};
 
 let sequelize;
@@ -33,6 +31,7 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
+    // eslint-disable-next-line no-undef
     const model = require(path.join(__dirname, file))(
       sequelize,
       Sequelize.DataTypes
