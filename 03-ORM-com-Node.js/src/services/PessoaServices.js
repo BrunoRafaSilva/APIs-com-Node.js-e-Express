@@ -1,4 +1,3 @@
-//herança de classe
 const Services = require("./Services.js");
 
 class PessoaServices extends Services {

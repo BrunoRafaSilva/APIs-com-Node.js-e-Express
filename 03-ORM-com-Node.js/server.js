@@ -1,6 +1,6 @@
 const app = require("./src/app.js");
 
-const PORT = 4444;
+const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log("servidor escutando!");
