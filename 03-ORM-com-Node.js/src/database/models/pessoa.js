@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   Pessoa.init(
     {
       nome: DataTypes.STRING,
-      email: DataTypes.STRING,
+      email: {
+        type: DataTypes.STRING,
+        validate: { isEmail: { args: true, msg: "formato do email inválido" } },
+      },
       cpf: DataTypes.STRING,
       ativo: DataTypes.BOOLEAN,
       role: DataTypes.STRING,
@@ -29,7 +32,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultScope: {
         where: { ativo: true },
       },
-      scopes: {//criado um escopo alternativo
+      scopes: {
+        //criado um escopo alternativo
         todosOsRegistros: { where: {} },
       },
     }
