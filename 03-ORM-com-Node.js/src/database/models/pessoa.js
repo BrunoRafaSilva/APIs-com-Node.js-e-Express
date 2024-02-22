@@ -1,5 +1,5 @@
 "use strict";
-const isCpfValido = require("../utils/validaCpfHelper.js");
+const isCpfValido = require("../../utils/validaCpfHelper.js");
 
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "estudante_id",
         scope: { status: "matriculado" },
         as: "aulasMatriculadas",
+      });
+      Pessoa.hasMany(models.Matricula, {
+        foreignKey: "estudante_id",
+        as: "todasAsMatriculas",
       });
     }
   }
