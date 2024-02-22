@@ -18,7 +18,7 @@ class PessoaServices extends Services {
   }
 
   async pegaPessoasEscopoTodos() {
-    const listaPessoas = await super.pegaPessoasEscopoTodos("todosOsRegistros");
+    const listaPessoas = await super.pegaRegistrosPorEscopo("todosOsRegistros");
     return listaPessoas;
   }
 }

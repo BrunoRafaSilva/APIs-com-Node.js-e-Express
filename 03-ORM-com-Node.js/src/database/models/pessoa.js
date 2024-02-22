@@ -25,19 +25,24 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           len: {
-            args: [3, 30] /* definido valor minimo e valor mmáximo*/,
-            msg: " O campo nome deve ter no minimo 3 caracteres.",
+            /* definido valor minimo e valor mmáximo*/ args: [3, 30],
+            msg: "o campo nome deve ter no mínimo 3 caracteres",
           },
         },
       },
       email: {
         type: DataTypes.STRING,
-        validate: { isEmail: { args: true, msg: "formato do email inválido" } },
+        validate: {
+          isEmail: {
+            args: true,
+            msg: "formato do email inválido",
+          },
+        },
       },
       cpf: {
         type: DataTypes.STRING,
         validate: {
-          cpfEValido: (cpf) => {
+          cpfEhValido: (cpf) => {
             if (!isCpfValido(cpf)) throw new Error("numero de CPF inválido");
           },
         },
@@ -51,11 +56,15 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "pessoas",
       paranoid: true,
       defaultScope: {
-        where: { ativo: true },
+        where: {
+          ativo: true,
+        },
       },
       scopes: {
         //criado um escopo alternativo
-        todosOsRegistros: { where: {} },
+        todosOsRegistros: {
+          where: {},
+        },
       },
     }
   );

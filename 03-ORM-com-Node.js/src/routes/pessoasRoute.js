@@ -17,8 +17,6 @@ router.get("/pessoas/:id", (req, res) =>
 router.post("/pessoas", (req, res) => pessoaController.criaNovo(req, res));
 router.put("/pessoas/:id", (req, res) => pessoaController.atualiza(req, res));
 router.delete("/pessoas/:id", (req, res) => pessoaController.exclui(req, res));
-
-// pegando pelos escopos definidos cima.
 router.get("/pessoas/:estudante_id/matriculas", (req, res) =>
   pessoaController.pegaMatriculasAtivas(req, res)
 );
@@ -28,20 +26,13 @@ router.get("/pessoas/:estudante_id/matriculas/todos", (req, res) =>
 router.get("/pessoas/:estudante_id/matriculas/:id", (req, res) =>
   matriculaController.pegaUm(req, res)
 );
-
 router.post("/pessoas/:estudante_id/matriculas", (req, res) =>
   matriculaController.criaNovo(req, res)
 );
-
-router.post("/pessoas/:estudante_id/matriculas", (req, res) =>
-  matriculaController.criarNovo(req, res)
-);
-
 router.put("/pessoas/:estudante_id/matriculas/:id", (req, res) =>
   matriculaController.atualiza(req, res)
 );
-
-router.delete("/pessoas/:estudante_id/matriculas", (req, res) =>
+router.delete("/pessoas/:estudante_id/matriculas/:id", (req, res) =>
   matriculaController.exclui(req, res)
 );
 

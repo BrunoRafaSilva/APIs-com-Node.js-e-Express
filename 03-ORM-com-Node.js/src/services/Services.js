@@ -1,4 +1,4 @@
-const dataSource = require("../database//models");
+const dataSource = require("../database/models");
 
 class Services {
   constructor(nomeDoModel) {
@@ -9,7 +9,7 @@ class Services {
     return dataSource[this.model].findAll();
   }
 
-  async pegaPessoasEscopoTodos(escopo) {
+  async pegaRegistrosPorEscopo(escopo) {
     return dataSource[this.model].scope(escopo).findAll();
   }
 
@@ -26,7 +26,7 @@ class Services {
   }
 
   async atualizaRegistro(dadosAtualizados, where) {
-    const listadeRegistrosAtualizados = dataSource[this.model].update(
+    const listadeRegistrosAtualizados = await dataSource[this.model].update(
       dadosAtualizados,
       {
         where: { ...where },
