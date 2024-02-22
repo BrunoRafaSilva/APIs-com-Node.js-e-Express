@@ -17,12 +17,8 @@ class Services {
     return dataSource[this.model].findByPk(id);
   }
 
-  async pegaEContaRegistro(where) {
-    return dataSource[this.model].findAndCountAll({
-      where: { ...where },
-      //limit: 2,
-      order: [["id", "ASC"]],
-    });
+  async pegaEContaRegistro(options) {
+    return dataSource[this.model].findAndCountAll({ ...options });
   }
 
   async pegaUmRegistro(where) {
@@ -33,11 +29,12 @@ class Services {
     return dataSource[this.model].create(dadosDoRegistro);
   }
 
-  async atualizaRegistro(dadosAtualizados, where) {
+  async atualizaRegistro(dadosAtualizados, where, transaction = {}) {
     const listadeRegistrosAtualizados = await dataSource[this.model].update(
       dadosAtualizados,
       {
         where: { ...where },
+        transaction: transaction,
       }
     );
     if (listadeRegistrosAtualizados[0] === 0) {
